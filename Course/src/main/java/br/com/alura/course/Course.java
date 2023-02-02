@@ -8,6 +8,8 @@ public class Course {
     private String instructor;
     private List<Class> classes = new ArrayList<>();
 
+    private Set<Student> students = new HashSet<>();
+
     public Course(String name, String instructor) {
         this.name = name;
         this.instructor = instructor;
@@ -25,6 +27,10 @@ public class Course {
         return Collections.unmodifiableList(classes); // read only
     }
 
+    public Set<Student> getStudents() {
+        return Collections.unmodifiableSet(students);
+    }
+
     public int getTotalTime(){
         int totalTime = 0;
         for (Class c : classes) {
@@ -36,6 +42,15 @@ public class Course {
         this.classes.add(c);
     }
 
+    public void registerStudent(Student student) {
+        this.students.add(student);
+    }
+
+    public boolean isRegistered(Student student){
+        return this.students.contains(student);
+    }
+
+
     @Override
     public String toString() {
         return "Course: "
@@ -45,4 +60,5 @@ public class Course {
                 + " minutes. Classes: "
                 + this.classes;
     }
+
 }

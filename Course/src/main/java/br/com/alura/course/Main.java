@@ -8,21 +8,40 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Course javaCollections = new Course("Java", "Kam");
+        Course course1 = new Course("Java", "Kami");
 
-        javaCollections.addClass(new Class("DEF Java", 20));
-        javaCollections.addClass(new Class("ABC Java", 15));
-        javaCollections.addClass(new Class("GHI Java", 25));
+        course1.addClass(new Class("DEF Java", 20));
+        course1.addClass(new Class("ABC Java", 15));
+        course1.addClass(new Class("GHI Java", 25));
 
-        List<Class> immutableClasses = javaCollections.getClasses();
+        Student s1 = new Student("Noah" , 1);
+        Student s2 = new Student("Kevin" , 2);
+        Student s3 = new Student("Thor" , 3);
+        Student s4 = new Student("Noah", 1);
+
+        course1.registerStudent(s1);
+        course1.registerStudent(s2);
+        course1.registerStudent(s3);
+
+        System.out.println("All students registered in this course: ");
+        course1.getStudents().forEach(student -> {
+            System.out.println(student);
+        });
+
+        System.out.println(course1.getStudents().size());
+        System.out.println(course1.isRegistered(s4));
+        System.out.println(s1.equals(s4));
+
+
+        List<Class> immutableClasses = course1.getClasses();
         System.out.println(immutableClasses);
 
         List<Class> classes = new ArrayList<>(immutableClasses);
 
         Collections.sort(classes);
         System.out.println(classes);
-        System.out.println(javaCollections.getTotalTime());
-        System.out.println(javaCollections);
+        System.out.println("Course total time: " + course1.getTotalTime());
+        System.out.println("Description - " + course1);
 
     }
 }
