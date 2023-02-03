@@ -29,7 +29,7 @@ public class Main {
         });
 
         System.out.println(course1.getStudents().size());
-        System.out.println(course1.isRegistered(s4));
+        System.out.println(course1.isRegistered(2));
         System.out.println(s1.equals(s4));
 
 

@@ -10,6 +10,8 @@ public class Course {
 
     private Set<Student> students = new HashSet<>();
 
+    private Map<Integer, Student> studentMap = new HashMap<>(); // fast
+
     public Course(String name, String instructor) {
         this.name = name;
         this.instructor = instructor;
@@ -44,10 +46,11 @@ public class Course {
 
     public void registerStudent(Student student) {
         this.students.add(student);
+        this.studentMap.put(student.getRegistrationNumber(), student);
     }
 
-    public boolean isRegistered(Student student){
-        return this.students.contains(student);
+    public Student isRegistered(int number){
+        return studentMap.get(number);
     }
 
 
